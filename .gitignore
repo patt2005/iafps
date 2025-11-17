@@ -1,0 +1,63 @@
+# Build directories
+build/
+cmake-build-*/
+xcode-build/
+Debug/
+Release/
+out/
+
+# CMake generated files
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+*.cmake
+
+# Compiled binaries and object files
+*.exe
+*.app
+*.o
+*.obj
+*.so
+*.dylib
+*.dll
+*.a
+*.lib
+
+# IDE and editor files
+.vscode/
+.idea/
+*.xcodeproj/
+*.xcworkspace/
+.DS_Store
+*.swp
+*.swo
+*~
+
+# Compile commands (can be regenerated)
+compile_commands.json
+
+# OS generated files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Package managers
+vcpkg_installed/
+conan_cache/
+
+# Test and coverage reports
+*.gcov
+*.lcov
+coverage/
+test_results/
+
+# Documentation build
+docs/_build/
+docs/html/
+docs/latex/
+
+# Temporary files
+*.tmp
+*.temp
+*.log
