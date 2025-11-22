@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-list(APPEND CMAKE_PREFIX_PATH "/Users/petrugrigor/Documents/Iafps/libtorch")
+list(APPEND CMAKE_PREFIX_PATH "${CMAKE_CURRENT_SOURCE_DIR}/libtorch")
 find_package(Torch REQUIRED)
 
 find_package(Python3 COMPONENTS Interpreter Development REQUIRED)
@@ -69,9 +69,7 @@ target_compile_definitions(Iafps PRIVATE
 add_dependencies(Iafps opencv_core opencv_imgproc opencv_imgcodecs opencv_highgui)
 
 target_link_libraries(Iafps
-    ${TORCH_INSTALL_PREFIX}/lib/libtorch.dylib
-    ${TORCH_INSTALL_PREFIX}/lib/libtorch_cpu.dylib
-    ${TORCH_INSTALL_PREFIX}/lib/libc10.dylib
+    ${TORCH_LIBRARIES}
     opencv_core
     opencv_imgproc
     opencv_imgcodecs
