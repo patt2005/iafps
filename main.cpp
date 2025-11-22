@@ -448,10 +448,12 @@ int main()
 {
     seed_everything();
 
+    string folder_base_path = "./drive/MyDrive"; // /Users/petrugrigor/Documents
+
     map<string, string> config = {
-        {"train_path", "/Users/petrugrigor/Documents/Iafps/Data/Train"},
-        {"test_path", "/Users/petrugrigor/Documents/Iafps/Data/Test"},
-        {"validation_path", "/Users/petrugrigor/Documents/Iafps/Data/Validation"}};
+        {"train_path", folder_base_path + "/Data/Train"},
+        {"test_path", folder_base_path + "/Data/Test"},
+        {"validation_path", folder_base_path + "/Data/Validation"}};
 
     PlantDiseaseDataset train_dataset = PlantDiseaseDataset(config["train_path"]);
     PlantDiseaseDataset validation_dataset = PlantDiseaseDataset(config["validation_path"]);
@@ -459,32 +461,35 @@ int main()
 
     TrainConfig train_config = TrainConfig();
 
-    auto train_loader = torch::data::make_data_loader(
-        std::move(train_dataset),
-        torch::data::DataLoaderOptions()
-            .batch_size(train_config.batch_size)
-            .workers(train_config.num_workers)
-            .enforce_ordering(false));
+    cout << "Train dataset size " << train_dataset.size() << endl;
+    cout << "Test dataset size " << test_dataset.size() << endl;
 
-    auto test_loader = torch::data::make_data_loader(
-        std::move(test_dataset),
-        torch::data::DataLoaderOptions()
-            .batch_size(train_config.batch_size)
-            .workers(train_config.num_workers));
+    // auto train_loader = torch::data::make_data_loader(
+    //     std::move(train_dataset),
+    //     torch::data::DataLoaderOptions()
+    //         .batch_size(train_config.batch_size)
+    //         .workers(train_config.num_workers)
+    //         .enforce_ordering(false));
 
-    auto val_loader = torch::data::make_data_loader(
-        std::move(validation_dataset),
-        torch::data::DataLoaderOptions()
-            .batch_size(train_config.batch_size)
-            .workers(train_config.num_workers));
+    // auto test_loader = torch::data::make_data_loader(
+    //     std::move(test_dataset),
+    //     torch::data::DataLoaderOptions()
+    //         .batch_size(train_config.batch_size)
+    //         .workers(train_config.num_workers));
 
-    PlantDiseaseModel model = PlantDiseaseModel();
+    // auto val_loader = torch::data::make_data_loader(
+    //     std::move(validation_dataset),
+    //     torch::data::DataLoaderOptions()
+    //         .batch_size(train_config.batch_size)
+    //         .workers(train_config.num_workers));
 
-    unique_ptr<torch::optim::Optimizer> optimizer = get_optimizer(model, train_config.optimizer_type);
+    // PlantDiseaseModel model = PlantDiseaseModel();
 
-    Trainer trainer = Trainer(model, optimizer);
+    // unique_ptr<torch::optim::Optimizer> optimizer = get_optimizer(model, train_config.optimizer_type);
 
-    trainer.fit(*train_loader, *val_loader, train_config.epochs);
+    // Trainer trainer = Trainer(model, optimizer);
+
+    // trainer.fit(*train_loader, *val_loader, train_config.epochs);
 
     return 0;
 }
