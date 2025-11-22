@@ -1,0 +1,3 @@
+cp /content/drive/MyDrive/iafps/main.cpp ./iafps/
+
+make -j$(nproc)

@@ -453,9 +453,9 @@ int main()
     seed_everything();
 
     map<string, string> config = {
-        {"train_path", folder_base_path + "/content/drive/MyDrive/Data/Train"},
-        {"test_path", folder_base_path + "/content/drive/MyDrive/Data/Test"},
-        {"validation_path", folder_base_path + "/content/drive/MyDrive/Data/Validation"}};
+        {"train_path", "/content/drive/MyDrive/Data/Train"},
+        {"test_path", "/content/drive/MyDrive/Data/Test"},
+        {"validation_path", "/content/drive/MyDrive/Data/Validation"}};
 
     PlantDiseaseDataset train_dataset = PlantDiseaseDataset(config["train_path"]);
     PlantDiseaseDataset validation_dataset = PlantDiseaseDataset(config["validation_path"]);
