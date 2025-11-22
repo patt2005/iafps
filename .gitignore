@@ -47,6 +47,16 @@ Desktop.ini
 vcpkg_installed/
 conan_cache/
 
+# External libraries
+libtorch/
+opencv/
+opencv-*/
+
+# Model files
+*.pt
+*.pth
+*.onnx
+
 # Test and coverage reports
 *.gcov
 *.lcov
