@@ -448,7 +448,7 @@ int main()
 {
     seed_everything();
 
-    string folder_base_path = "./drive/MyDrive"; // /Users/petrugrigor/Documents
+    string folder_base_path = "./"; // /Users/petrugrigor/Documents
 
     map<string, string> config = {
         {"train_path", folder_base_path + "/Data/Train"},
