@@ -147,7 +147,7 @@ class PlantDiseaseModel : public torch::nn::Module
 {
 private:
     torch::jit::script::Module model;
-    string model_path = "/Users/petrugrigor/Documents/Iafps/resnet34_pretrained.pt";
+    string model_path = "./resnet34_pretrained.pt";
 
 public:
     PlantDiseaseModel() : torch::nn::Module()
