@@ -446,7 +446,7 @@ int main()
 {
     seed_everything();
 
-    string folder_base_path = "./"; // /Users/petrugrigor/Documents
+    string folder_base_path = "./content/drive/MyDrive";
 
     map<string, string> config = {
         {"train_path", folder_base_path + "/Data/Train"},
@@ -459,8 +459,19 @@ int main()
 
     TrainConfig train_config = TrainConfig();
 
-    cout << "Train dataset size " << train_dataset.size() << endl;
-    cout << "Test dataset size " << test_dataset.size() << endl;
+    if (train_dataset.size().has_value())
+    {
+        cout << "Train dataset size is now " << train_dataset.size().value() << endl;
+    }
+
+    if (test_dataset.size().has_value())
+    {
+        cout << "Test dataset size is now " << test_dataset.size().value() << endl;
+    }
+
+    // if (train_dataset.size().has)
+    // cout << "Train dataset size " << train_dataset.size() << endl;
+    // cout << "Test dataset size " << test_dataset.size() << endl;
 
     // auto train_loader = torch::data::make_data_loader(
     //     std::move(train_dataset),
