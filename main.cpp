@@ -10,14 +10,12 @@
 #include <random>
 #include <map>
 #include <memory>
-#include "matplotlibcpp.h"
 #include <tuple>
 #include <algorithm>
 
 using namespace std;
 
 namespace fs = std::filesystem;
-namespace plt = matplotlibcpp;
 
 torch::Tensor get_accuracy_score(torch::Tensor predictions, torch::Tensor targets);
 

@@ -25,7 +25,6 @@ set_target_properties(Iafps PROPERTIES
 target_include_directories(Iafps PRIVATE
     ${TORCH_INCLUDE_DIRS}
     ${OpenCV_INCLUDE_DIRS}
-    ${CMAKE_CURRENT_SOURCE_DIR}/matplotlib-cpp-master
     ${Python3_INCLUDE_DIRS}
     ${Python3_NumPy_INCLUDE_DIRS}
 )
