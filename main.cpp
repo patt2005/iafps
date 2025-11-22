@@ -37,6 +37,8 @@ public:
         channels = "RGB";
         use_augmentations = false;
 
+        cout << "File path: " << path << endl;
+
         if (fs::exists(path))
         {
             for (const auto &entry : fs::directory_iterator(path))
@@ -59,6 +61,10 @@ public:
                     cout << "Load " << count << " images with label " << label << endl;
                 }
             }
+        }
+        else
+        {
+            cout << "Folder not found on this instance." << endl;
         }
     }
 
@@ -446,12 +452,10 @@ int main()
 {
     seed_everything();
 
-    string folder_base_path = "./content/drive/MyDrive";
-
     map<string, string> config = {
-        {"train_path", folder_base_path + "/Data/Train"},
-        {"test_path", folder_base_path + "/Data/Test"},
-        {"validation_path", folder_base_path + "/Data/Validation"}};
+        {"train_path", folder_base_path + "/content/drive/MyDrive/Data/Train"},
+        {"test_path", folder_base_path + "/content/drive/MyDrive/Data/Test"},
+        {"validation_path", folder_base_path + "/content/drive/MyDrive/Data/Validation"}};
 
     PlantDiseaseDataset train_dataset = PlantDiseaseDataset(config["train_path"]);
     PlantDiseaseDataset validation_dataset = PlantDiseaseDataset(config["validation_path"]);
