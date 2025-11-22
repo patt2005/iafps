@@ -19,7 +19,6 @@ using namespace std;
 namespace fs = std::filesystem;
 namespace plt = matplotlibcpp;
 
-// Forward declaration
 torch::Tensor get_accuracy_score(torch::Tensor predictions, torch::Tensor targets);
 
 class PlantDiseaseDataset : public torch::data::Dataset<PlantDiseaseDataset>
