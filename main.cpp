@@ -114,15 +114,15 @@ public:
         return tensor;
     }
 
-    torch::data::Example<> get(size_t index) override
+    torch::data::Example<torch::Tensor, torch::Tensor> get(size_t index) override
     {
         tuple<string, string> image_data = images_labels[index];
 
-        string path = get<0>(image_data);
-        string label = get<1>(image_data);
+        string path = std::get<0>(image_data);
+        string label = std::get<1>(image_data);
 
-        int width = get<0>(image_shape);
-        int height = get<1>(image_shape);
+        int width = std::get<0>(image_shape);
+        int height = std::get<1>(image_shape);
 
         torch::Tensor image = load_image(path, width, height);
 
@@ -308,7 +308,7 @@ public:
             cout << "Epoch [" << (epoch + 1) << "/" << epochs << "]: Loss: " << epoch_loss << " | Metric: " << epoch_score << std::endl;
 
             if (true)
-            { // Always run validation if loader is provided
+            {
                 auto [validation_loss, validation_score] = evaluate(validation_loader);
 
                 std::map<std::string, double> val_logs = {
@@ -468,6 +468,11 @@ int main()
     {
         cout << "Test dataset size is now " << test_dataset.size().value() << endl;
     }
+
+    auto tensor_data = train_dataset.get(100);
+
+    cout << "Tensor data: " << tensor_data.data << endl;
+    cout << "Tensor target: " << tensor_data.target << endl;
 
     // if (train_dataset.size().has)
     // cout << "Train dataset size " << train_dataset.size() << endl;
