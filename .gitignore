@@ -27,6 +27,7 @@ Makefile
 # IDE and editor files
 .vscode/
 .idea/
+.claude/
 *.xcodeproj/
 *.xcworkspace/
 .DS_Store
